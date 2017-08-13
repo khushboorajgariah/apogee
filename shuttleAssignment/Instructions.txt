@@ -1,0 +1,14 @@
+Question - 
+You need to develop a web page containing a map. This page displays live tracking of a
+vehicle(Bus in this case) moving from start location point to end location point. Consider the first
+location(lat, lng) as start and last as end.
+1) Screen displays a route plotted against several location points as provided in sample
+data set
+2) Screen displays a marker against all the points as bus stops
+3) There is a bus that starts from start point and moves along the plotted route path till the
+last point.
+4) The movement of the Bus should be smooth and along the plotted line.
+
+
+
+PLEASE RUN THE index.html TO LAUNCH THE WEBPAGE.
