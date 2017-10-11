@@ -3,23 +3,42 @@ import {
     Text,
     View,
     ScrollView,
-    Alert
+    Alert,
+    Button,
+    StyleSheet
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {styles} from '../stylesheet.js';
-import {ListView} from "../components/listView";
+import {ListView} from '../components/listView';
 import {connect} from 'react-redux';
-import {actions} from "../actions/actions";
+import {actions} from '../actions/actions';
+import {Header} from '../components/header';
+import {Footer} from '../components/footer';
 
 class Help extends Component {
-
+    static navigationOptions = {
+        title: 'Help',
+        headerStyle: {
+            backgroundColor: '#244f8e'
+        },
+        headerTitleStyle: {
+            color: 'white'
+        },
+        headerRight: <Icon
+            name="search"
+        />
+    };
     render() {
+        const { navigate } = this.props.navigation;
         return(
-            <ScrollView>
-                <View style={styles.appContent}>
-                    <ListView list_data= {this.props.list_data} onPressHandler={this.props.onPress}/>
-                </View>
-            </ScrollView>
+            <View style={StyleSheet.absoluteFill}>
+                <ScrollView>
+                    <View style={styles.appContent}>
+                        <ListView list_data= {this.props.list_data} onPressHandler={this.props.onPress}/>
+                    </View>
+                </ScrollView>
+                <Footer/>
+            </View>
         );
     }
 }

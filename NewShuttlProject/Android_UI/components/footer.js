@@ -6,12 +6,12 @@ import {
 
 export const Footer = () =>  {
     return(
-        <View>
-            <Button
-                raised
-                large
-                color='#00acb6'
-                title='Call Us' />
-        </View>
+        <Button
+            raised
+            large
+            color='#00acb6'
+            title='Call Us'
+        />
+
     );
 };

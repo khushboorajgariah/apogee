@@ -1,22 +1,15 @@
 import React, { Component } from 'react';
-import {
-    StyleSheet
-} from 'react-native';
-import {
-    View
-} from 'react-native';
-import {Header} from './components/header.js';
-import {Footer} from './components/footer.js';
 import Help from './compositions/help.js';
+import {StackNavigator, DrawerNavigator} from "react-navigation";
+import Profile from './compositions/profile.js';
+import Home from './compositions/home.js';
 
-export class App extends Component {
-    render() {
-        return (
-            <View style={StyleSheet.absoluteFill}>
-                <Header/>
-                <Help/>
-                <Footer/>
-            </View>
-        );
-    }
-}
+const Drawer =  DrawerNavigator({
+    Home: {screen: Home},
+    Help: {screen: Help},
+    Profile: {screen: Profile}
+});
+
+export const App = StackNavigator ({
+    Home: {screen: Drawer}
+});

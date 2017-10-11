@@ -1,0 +1,161 @@
+@font-face {
+  font-family: "Roboto-Thin";
+  src: url("fonts/Roboto-Thin.ttf"); }
+@font-face {
+  font-family: "Roboto-Medium";
+  src: url("fonts/Roboto-Medium.ttf"); }
+@font-face {
+  font-family: "RobotoCondensed-Light";
+  src: url("fonts/RobotoCondensed-Light.ttf"); }
+html, body, main {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  height: 100%;
+  font-family: 'Roboto-Thin'; }
+
+h1, h2, h3, h4, h5, h6 {
+  padding: 0;
+  margin: 0; }
+
+main {
+  background-color: #f5f5f5; }
+  main .loader {
+    position: absolute;
+    left: 50%;
+    z-index: 1;
+    margin-left: -30px;
+    border: 4px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 4px solid #a3a3a3;
+    width: 20px;
+    height: 20px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite; }
+  main #mainContainer {
+    padding-top: 10px; }
+  main section {
+    padding: 0 20px; }
+    main section h1 {
+      color: #4f4f4f;
+      font-size: 2.2em;
+      line-height: 1.2em; }
+    main section div {
+      padding-bottom: 15px;
+      margin-top: 10px;
+      color: #a2a2a2;
+      border-bottom: solid 1px #ececec;
+      line-height: 1.5em;
+      font-size: 1em;
+      font-weight: bolder; }
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg); } }
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+  main article {
+    margin-top: 20px;
+    padding: 0 10px;
+    color: #4f4f4f;
+    min-height: 30px; }
+    main article #articleContent {
+      display: none;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 1px 10px 1px #ddd;
+      border-radius: 5px; }
+      main article #articleContent #offerDetail {
+        padding-bottom: 20px;
+        border-bottom: solid 1px #ececec; }
+        main article #articleContent #offerDetail > div {
+          width: 49%;
+          display: inline-block; }
+          main article #articleContent #offerDetail > div h2 {
+            font-family: 'Roboto-Medium';
+            font-weight: lighter; }
+          main article #articleContent #offerDetail > div#price {
+            text-align: right;
+            vertical-align: top;
+            font-family: 'Roboto-Medium'; }
+          main article #articleContent #offerDetail > div span {
+            font-size: 0.8em;
+            color: #a3a3a3;
+            font-family: 'Roboto-Medium'; }
+      main article #articleContent #offerDescription {
+        margin-top: 10px;
+        font-size: 0.7em;
+        font-family: 'Roboto-Medium';
+        display: flex; }
+        main article #articleContent #offerDescription img {
+          max-height: 15px;
+          padding-top: 5px; }
+        main article #articleContent #offerDescription span {
+          padding-left: 5px; }
+  main button#paymentButton {
+    height: 50px;
+    width: calc(100% - 20px);
+    margin-left: 10px;
+    margin-top: 20px;
+    font-size: 1em;
+    background-color: #4baab4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer; }
+  main .overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2; }
+    main .overlay#successContainer, main .overlay#errorContainer {
+      color: white;
+      text-align: center;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center; }
+      main .overlay#successContainer img, main .overlay#errorContainer img {
+        width: 70px; }
+      main .overlay#successContainer h1, main .overlay#errorContainer h1 {
+        margin-top: 25px; }
+      main .overlay#successContainer h4, main .overlay#errorContainer h4 {
+        width: 90%;
+        align-self: center; }
+      main .overlay#successContainer button, main .overlay#errorContainer button {
+        background-color: white;
+        color: #4baab4;
+        height: 50px;
+        border-radius: 30px;
+        border: none;
+        outline: none;
+        font-size: 1.1em;
+        position: absolute;
+        bottom: 20px;
+        width: 90%;
+        align-self: center; }
+    main .overlay#successContainer {
+      background-color: #4baab4; }
+      main .overlay#successContainer h4 {
+        color: #eee; }
+      main .overlay#successContainer button {
+        background-color: white; }
+    main .overlay#errorContainer {
+      background-color: white;
+      color: #e3545d; }
+      main .overlay#errorContainer h4 {
+        color: #4f4f4f; }
+      main .overlay#errorContainer button {
+        background-color: #4baab4;
+        color: white; }
+
+/*# sourceMappingURL=index.css.map */

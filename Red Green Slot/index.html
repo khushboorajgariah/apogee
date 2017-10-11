@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="description" content="Red Green Slot">
+		<meta name="keywords" content="Shuttl, Booster Pack">
+		<meta name="author" content="Khushboo Rajgariah">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1" />
+		<title>Red Green Slot</title>
+		<link rel="stylesheet" type="text/css" href="res/index.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+		<script src="index.js"></script>
+	</head>
+	<body>
+		<main>
+			<div id="mainContainer">
+				<section>
+                    <img src="res/images/HeaderImage.png">
+					<h1>High Demand Buses</h1>
+					<div>Due to very high demand sometimes few buses are not available at regular prices. But you can buy a booster pack which will enable you to do booking on those high demand buses.</div>
+				</section>
+                <article>
+					<div class="loader"></div>
+					<div id="articleContent">
+						<div id="offerDetail">
+							<div>
+								<h2 id="noOfRides"></h2>
+								<span id="validity"></span>
+							</div>
+							<div id="price"></div>
+						</div>
+						<div id="offerDescription">
+                            <img src="res/images/BoosterIcon.png">
+                            <span>This booster will let you do bookings on a total of 5 high demand buses.</span>
+                        </div>
+					</div>
+				</article>
+				<button id="paymentButton">BUY THIS BOOSTER PACK</button>
+			</div>
+			<div id="successContainer" class="overlay">
+                <img src="res/images/success_tick_1.5x.png">
+				<h1>Payment Successful</h1>
+                <h4>You are now eligible to do booking on High Demand buses.</h4>
+                <button>OKAY</button>
+			</div>
+            <div id="errorContainer" class="overlay">
+                <img src="res/images/failure_icon_1.5x.png">
+                <h1>Payment Failed!</h1>
+                <h4>Looks like we weren't able to receive the payment. In case deducted from your account, it will get refunded within 2-3 business days.</h4>
+                <button>TRY AGAIN</button>
+            </div>
+		</main>
+	</body>
+</html>
