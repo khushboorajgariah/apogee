@@ -88,7 +88,7 @@ $(document).ready(function(){
 
                 initiateRazorpay = function (transactionId) {
                     var options = {
-                            "key": "rzp_test_Rm7c2W5cB1ZxqA",
+                            "key": "",
                             "amount": (offerDetails.price * 100),
                             "name": "Shuttl",
                             "description": "Booster Pack Payment",
