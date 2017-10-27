@@ -16,7 +16,7 @@ import {Header} from '../components/header';
 import {Footer} from '../components/footer';
 
 class Help extends Component {
-    static navigationOptions = {
+    static navigationOptions = ({navigation}) => ({
         title: 'Help',
         headerStyle: {
             backgroundColor: '#244f8e'
@@ -24,10 +24,19 @@ class Help extends Component {
         headerTitleStyle: {
             color: 'white'
         },
+        headerLeft: <Icon
+            name="arrow-left"
+            size={20}
+            color= 'white'
+            style={{paddingLeft: 20}}
+            onPress={()=>{
+                navigation.goBack(null);
+            }}
+        />,
         headerRight: <Icon
             name="search"
         />
-    };
+    });
     render() {
         const { navigate } = this.props.navigation;
         return(

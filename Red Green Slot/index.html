@@ -4,24 +4,22 @@
 		<meta charset="UTF-8">
 		<meta name="description" content="Red Green Slot">
 		<meta name="keywords" content="Shuttl, Booster Pack">
-		<meta name="author" content="Khushboo Rajgariah">
+		<meta name="author" content="Shuttl">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1" />
-		<title>Red Green Slot</title>
+		<title>Shuttl - App Based Office Bus</title>
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="res/index.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-		<script src="index.js"></script>
 	</head>
 	<body>
 		<main>
-			<div id="mainContainer">
 				<section>
-                    <img src="res/images/HeaderImage.png">
+                    <img src="res/images/high_demand_main_3x.png">
 					<h1>High Demand Buses</h1>
 					<div>Due to very high demand sometimes few buses are not available at regular prices. But you can buy a booster pack which will enable you to do booking on those high demand buses.</div>
 				</section>
+				<div class="divider"></div>
                 <article>
 					<div class="loader"></div>
 					<div id="articleContent">
@@ -32,6 +30,7 @@
 							</div>
 							<div id="price"></div>
 						</div>
+						<div class="divider"></div>
 						<div id="offerDescription">
                             <img src="res/images/BoosterIcon.png">
                             <span>This booster will let you do bookings on a total of 5 high demand buses.</span>
@@ -39,7 +38,6 @@
 					</div>
 				</article>
 				<button id="paymentButton">BUY THIS BOOSTER PACK</button>
-			</div>
 			<div id="successContainer" class="overlay">
                 <img src="res/images/success_tick_1.5x.png">
 				<h1>Payment Successful</h1>
@@ -53,5 +51,9 @@
                 <button>TRY AGAIN</button>
             </div>
 		</main>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+		<script src="index.js"></script>
 	</body>
 </html>

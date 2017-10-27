@@ -1,7 +1,22 @@
 $(document).ready(function(){
 
-    var offerDetails = {},
+    var getParameterByName = function (name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        },
+        offerDetails = {},
         transactionId,
+        encryptedUserId = getParameterByName('euid'),
+        routeId = getParameterByName('rid'),
+        addOnType = getParameterByName('addonType'),
+        errorContainer = $('#errorContainer'),
+        baseURL = "https://qa.goplus.in",
+
         initiate = function () {
             registerEvents();
             fetchOfferDetails();
@@ -14,50 +29,59 @@ $(document).ready(function(){
 
         fetchOfferDetails = function () {
             var request = {
-                encryptedUserId: "abcd",
-                routeId: "abcd",
-                addOnType: "abcd"
+                encryptedUserId: encryptedUserId,
+                routeId: routeId,
+                addOnType: addOnType
             };
+
             $.ajax({
-                url: 'res/data/fetchDetails.json',
+                url: baseURL+'/v2/addOn/getDetails',
                 data: request,
                 type: 'GET',
                 success: function (response) {
                     offerDetails = response.data;
-                    populateOfferDetails(offerDetails);
+                    populateOfferDetails();
+                },
+                error : function( error ){
+                    errorContainer.html('<h4>Unable to Proceed.</h4>');
+                    errorContainer.css('display', 'flex');
+                    setTimeout(function(){
+                        redirectToHome();
+                    }, 3000);
                 }
             });
         },
 
-        populateOfferDetails = function (offerDetails) {
+        populateOfferDetails = function () {
                 $('article .loader').hide();
                 $('#articleContent').show();
 
-                var noOfRides = offerDetails.no_of_rides + " Rides",
-                    price = "&#8377;" + offerDetails.price,
-                    validity = offerDetails.validity.toUpperCase() + " VALIDITY";
-
-                $('#noOfRides').text(noOfRides);
-                $('#price').html(price);
-                $('#validity').text(validity);
+                $('#noOfRides').text(offerDetails.no_of_rides + " Rides");
+                $('#price').html("&#8377;" + offerDetails.price);
+                $('#validity').text(offerDetails.validity.toUpperCase() + " VALIDITY");
         },
 
         handlePayment = function () {
+
             var createTransaction = function () {
                     var request = {
-                        encryptedUserId: "abcd",
+                        encryptedUserId: encryptedUserId,
                         packageId: offerDetails.packageId,
                         paymentGateway: offerDetails.paymentGateway,
                         amount: offerDetails.price
                     };
 
                     $.ajax({
-                        url: 'res/data/createTransaction.json',
+                        url: baseURL+'/v2/addOn/createTransaction',
                         data: request,
                         type: 'GET',
                         success: function (response) {
                             transactionId = response.data.transactionId;
                             initiateRazorpay(transactionId);
+                        },
+                        error: function () {
+                            errorContainer.html('<h4>Unable to Proceed. Please try again.</h4><button>OKAY</button>');
+                            errorContainer.css('display', 'flex');
                         }
                     });
                 },
@@ -65,11 +89,12 @@ $(document).ready(function(){
                 initiateRazorpay = function (transactionId) {
                     var options = {
                             "key": "rzp_test_Rm7c2W5cB1ZxqA",
-                            "amount": offerDetails.price,
+                            "amount": (offerDetails.price * 100),
                             "name": "Shuttl",
+                            "description": "Booster Pack Payment",
                             "handler": function (razorpayResponse){
                                 var request = {
-                                    encryptedUserId: "abcd",
+                                    encryptedUserId: encryptedUserId,
                                     transactionId: transactionId,
                                     gatewayPaymentId: razorpayResponse.razorpay_payment_id,
                                     addOnPackageId: offerDetails.packageId,
@@ -90,14 +115,19 @@ $(document).ready(function(){
 
                 captureTransaction = function (request) {
                     $.ajax({
-                        url: 'res/data/captureTransaction.json',
-                        data: request,
-                        type: "GET",
+                        url: baseURL+'/v2/addOn/capturePaymentAndBuy',
+                        data: JSON.stringify(request),
+                        type: "POST",
+                        contentType: 'application/json',
                         success: function (response) {
-                           $('#successContainer').css('display', 'flex');
+                            if(!response.success) {
+                                errorContainer.css('display', 'flex');
+                            }else {
+                                $('#successContainer').css('display', 'flex');
+                            }
                         },
                         error: function () {
-                            $('#errorContainer').css('display', 'flex');
+                            errorContainer.css('display', 'flex');
                         }
                     });
                 };
@@ -105,8 +135,14 @@ $(document).ready(function(){
             createTransaction();
         },
 
-        redirectToHome = function (event) {
-            $(event.target).parent('.overlay').css('display', 'none');
+        redirectToHome = function () {
+
+            var fLat = getParameterByName("fLat"),
+                fLng = getParameterByName("fLng"),
+                tLat = getParameterByName("tLat"),
+                tLng = getParameterByName("tLng");
+
+            window.location.href = "com.shuttl://mid:2?"+"fLat="+fLat+'&'+"fLng="+fLng+'&'+"tLat="+tLat+'&'+"tLng="+tLng;
         };
 
     initiate();
