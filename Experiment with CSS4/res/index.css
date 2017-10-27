@@ -1,0 +1,15 @@
+body:any-link {
+    font-size: 50px;
+}
+
+h2:not(#sampleHeading) {
+    color: green;
+}
+
+:-webkit-any-link {
+    font-size: 30px;
+}
+
+div:empty {
+    border: solid 1px black;
+}

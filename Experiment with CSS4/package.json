@@ -1,0 +1,14 @@
+{
+  "name": "CSS4",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "webpack-dev-server --inline --hot --history-api-fallback --host 0.0.0.0 --port 8080"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "webpack": "^3.8.1",
+    "postcss": "^6.0.13",
+    "webpack-dev-server": "^1.16.2"
+  }
+}
