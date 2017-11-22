@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gradient fill across multiple divs</title>
+    <style>
+        #parent {
+            background: rgba(247, 247, 247, 1);
+            display: inline-block;
+            -webkit-transform: skewX(-30deg);
+            -ms-transform: skewX(-30deg);
+            transform: skewX(-30deg);
+            border-bottom-left-radius: 36px;
+            border-top-left-radius: 18px;
+            height: 10px;
+        }
+        .child {
+            display: inline-block;
+            border-right: solid 4px white;
+            width: 50px;
+            height: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="grandparent">
+        <div id="parent">
+            <div class="child">
+            &nbsp;</div><div class="child">
+            &nbsp;</div><div class="child">
+            &nbsp;</div><div class="child">
+            &nbsp;</div>
+        </div>
+    </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var parentDiv = $('#parent');
+        parentDiv.css('background', '-webkit-linear-gradient(left, rgba(0, 173, 183, 1) 0%, rgba(25, 220, 204, 1) 50%, rgba(247, 247, 247, 1) 50%, rgba(247, 247, 247, 1) 100%)');
+        parentDiv.css('background', '-moz-linear-gradient(left, rgba(0, 173, 183, 1) 0%, rgba(25, 220, 204, 1) 50%, rgba(247, 247, 247, 1) 50%, rgba(247, 247, 247, 1) 100%)');
+        parentDiv.css('background', '-o-linear-gradient(left, rgba(0, 173, 183, 1) 0%, rgba(25, 220, 204, 1) 50%, rgba(247, 247, 247, 1) 50%, rgba(247, 247, 247, 1) 100%)');
+        parentDiv.css('background', 'linear-gradient(left, rgba(0, 173, 183, 1) 0%, rgba(25, 220, 204, 1) 50%, rgba(247, 247, 247, 1) 50%, rgba(247, 247, 247, 1) 100%)');
+    });
+</script>
+</body>
+</html>
