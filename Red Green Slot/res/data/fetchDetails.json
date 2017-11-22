@@ -1,9 +1,0 @@
-{
-  "data":{
-    "no_of_rides": 10,
-    "price": 100,
-    "validity": "1 year",
-    "packageId": 1234,
-    "paymentGateway": "abcd"
-  }
-}
